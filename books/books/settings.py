@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f9$o5!q$%v)w=)vzu-@83^6v&$3nxi8*-ze!mfin&_gt$uo2*^'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    #'ddos_blocker.middleware.MyMiddleware'
+    # 'ddos_blocker.middleware.MyMiddleware'
 ]
 
 ROOT_URLCONF = 'books.urls'
@@ -85,11 +86,11 @@ WSGI_APPLICATION = 'books.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": os.getenv('POSTGRES_DB'),
-        "NAME": os.getenv('POSTGRES_NAME'),
-        "USER": os.getenv('POSTGRES_USER'),
-        "PASSWORD": os.getenv('POSTGRES_PASSWORD'),
-        "HOST": "localhost",
+        "ENGINE": os.getenv('POSTGRES_DB'), # django.db.backends.postgresql
+        "NAME": os.getenv('POSTGRES_NAME'), # ddos
+        "USER": os.getenv('POSTGRES_USER'), # ddos
+        "PASSWORD": os.getenv('POSTGRES_PASSWORD'), # ddos
+        "HOST": "postgres",
         "PORT": 5432,
     }
 }

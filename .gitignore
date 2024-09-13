@@ -1,5 +1,5 @@
 # PyCharm files
-../.idea/
+.idea/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -8,4 +8,5 @@ __pycache__/
 ../../.venv/
 venv/
 
-.env
+books/.env
+books/.env.docker
