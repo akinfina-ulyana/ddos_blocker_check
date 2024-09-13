@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_DB: ddos
+      POSTGRES_USER: ddos
+      POSTGRES_PASSWORD: ddos
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+    environment:
+      DEBUG: "False"
+      DB_NAME: "ddos"
+      DB_USER: "ddos"
+      DB_PASSWORD: "ddos"
+      DB_HOST: "postgres"
+      DB_PORT: 5432
+
+volumes:
+  postgres_data:
