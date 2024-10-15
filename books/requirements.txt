@@ -7,7 +7,7 @@ charset-normalizer==3.3.2
 click==8.1.7
 ConfigArgParse==1.7
 crispy-bootstrap5==2024.2
-ddos_blocker==0.0.2
+ddos_blocker==0.0.3
 Django==4.2
 django-crispy-forms==2.3
 djangorestframework==3.15.2
