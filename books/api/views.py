@@ -1,7 +1,8 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
-from store.models import Book
+
 from api.serializers import BooksSerializer
+from store.models import Book
 
 
 class BookAPIView(generics.ListAPIView):
@@ -35,7 +36,8 @@ class BookPriceView(generics.GenericAPIView):
     def get(self, request, name):
         try:
             book = Book.objects.get(name=name)
-            return Response({'price': book.price}, status=status.HTTP_200_OK)
+            return Response({"price": book.price}, status=status.HTTP_200_OK)
         except Book.DoesNotExist:
-            return Response({'error': 'Book not found'}, status=status.HTTP_404_NOT_FOUND)
-
+            return Response(
+                {"error": "Book not found"}, status=status.HTTP_404_NOT_FOUND
+            )
