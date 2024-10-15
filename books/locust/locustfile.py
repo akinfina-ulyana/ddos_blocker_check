@@ -1,4 +1,4 @@
-from locust import HttpUser, TaskSet, task, between
+from locust import HttpUser, TaskSet, between, task
 
 
 class UserBehavior(TaskSet):
@@ -9,7 +9,9 @@ class UserBehavior(TaskSet):
 
     @task(2)
     def create_book(self):
-        self.client.post(url="/api/v1/books/create/", json={"name": "New Book", "price": 38.90})
+        self.client.post(
+            url="/api/v1/books/create/", json={"name": "New Book", "price": 38.90}
+        )
 
     @task(3)
     def show_book_details(self):
