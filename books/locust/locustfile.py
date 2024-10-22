@@ -19,13 +19,11 @@ class UserBehavior(TaskSet):
         if response.status_code == 403:
             print("User blocked due to too many requests.")
 
-
     @task(3)
     def show_book_details(self):
         response = self.client.get(url="/api/v1/books/1/")
         if response.status_code == 403:
             print("User blocked due to too many requests.")
-
 
     @task(4)
     def show_book_price(self):
