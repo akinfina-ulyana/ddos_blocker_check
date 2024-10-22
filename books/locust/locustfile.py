@@ -1,5 +1,3 @@
-from http.client import responses
-
 from locust import HttpUser, TaskSet, between, task
 
 
